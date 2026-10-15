@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Aniversario, Amanda 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Poppins', system-ui, sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px 70px;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 15% 15%, #7a1d52 0%, transparent 55%),
+      radial-gradient(circle at 85% 85%, #932f66 0%, transparent 55%),
+      linear-gradient(160deg, #1b0512 0%, #2e0a20 50%, #48102f 100%);
+    background-attachment: fixed;
+  }
+
+  /* ---------- LLUVIA DE CORAZONES ---------- */
+  #lluvia {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Permite hacer clic en el botón a través de la lluvia */
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  .heart {
+    position: absolute;
+    top: -10vh;
+    line-height: 1;
+    animation-name: caer;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    will-change: transform, opacity;
+  }
+
+  .heart span {
+    display: inline-block;
+    animation: vaiven 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes caer {
+    0%   { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(120vh) rotate(var(--rot, 180deg)); opacity: 0; }
+  }
+
+  @keyframes vaiven {
+    from { transform: translateX(-14px) rotate(-12deg); }
+    to   { transform: translateX(14px) rotate(12deg); }
+  }
+
+  /* ---------- TARJETA ---------- */
+  .tarjeta {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 640px;
+    padding: 52px 30px 44px;
+    text-align: center;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow:
+      0 24px 70px rgba(0, 0, 0, 0.45),
+      0 0 80px rgba(255, 105, 180, 0.16);
+    animation: entrar 1s ease both;
+  }
+
+  @keyframes entrar {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .etiqueta {
+    font-size: 0.78rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ffb3d9;
+    opacity: 0.85;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.9rem, 11vw, 4.8rem);
+    line-height: 1.05;
+    font-weight: 700;
+    background: linear-gradient(100deg, #ffe3f1 0%, #ff7ab8 45%, #ffd0e8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 26px rgba(255, 122, 184, 0.35));
+  }
+
+  h1 .mi-amor {
+    display: block;
+    font-size: 0.62em;
+    margin-top: 4px;
+  }
+
+  .para {
+    margin-top: 18px;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: #ffd9ec;
+  }
+
+  .para strong {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* ---------- BOTÓN ---------- */
+  #btnCorazones {
+    margin-top: 34px;
+    padding: 17px 46px;
+    font-family: inherit;
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff3d8f 0%, #ff8fc7 100%);
+    box-shadow: 0 12px 32px rgba(255, 61, 143, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: latido 1.9s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 20;
+  }
+
+  #btnCorazones:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 16px 44px rgba(255, 61, 143, 0.6);
+  }
+
+  #btnCorazones:active {
+    transform: scale(0.95);
+  }
+
+  @keyframes latido {
+    0%, 100% { box-shadow: 0 12px 32px rgba(255,61,143,.45), 0 0 0 0 rgba(255,61,143,.55); }
+    50%      { box-shadow: 0 12px 32px rgba(255,61,143,.45), 0 0 0 16px rgba(255,61,143,0); }
+  }
+
+  .pista {
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: #ffb3d9;
+    opacity: 0.7;
+    font-weight: 300;
+  }
+
+  /* ---------- DIVISOR ---------- */
+  .divisor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 46px 0 6px;
+    color: #ff7ab8;
+    font-size: 0.9rem;
+  }
+
+  .divisor::before,
+  .divisor::after {
+    content: '';
+    height: 1px;
+    width: 70px;
+    background: linear-gradient(90deg, transparent, rgba(255,122,184,.7), transparent);
+  }
+
+  /* ---------- LISTA ---------- */
+  h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 7vw, 2.7rem);
+    font-weight: 700;
+    color: #ffd9ec;
+    filter: drop-shadow(0 0 18px rgba(255, 122, 184, 0.3));
+  }
+
+  .lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 26px;
+    text-align: left;
+  }
+
+  .lista li {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 20px;
+    font-size: 1.03rem;
+    font-weight: 300;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 122, 184, 0.22);
+    opacity: 0;
+    animation: aparecer 0.7s ease forwards;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .lista li::before {
+    content: '❤';
+    color: #ff4f9a;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+  }
+
+  .lista li:hover {
+    transform: translateX(8px);
+    background: rgba(255, 122, 184, 0.14);
+    border-color: rgba(255, 122, 184, 0.55);
+  }
+
+  .lista li:nth-child(1) { animation-delay: 0.15s; }
+  .lista li:nth-child(2) { animation-delay: 0.28s; }
+  .lista li:nth-child(3) { animation-delay: 0.41s; }
+  .lista li:nth-child(4) { animation-delay: 0.54s; }
+  .lista li:nth-child(5) { animation-delay: 0.67s; }
+
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Último punto destacado */
+  .lista li:last-child {
+    background: linear-gradient(135deg, rgba(255, 61, 143, 0.28), rgba(255, 143, 199, 0.16));
+    border-color: rgba(255, 122, 184, 0.65);
+    font-weight: 600;
+    font-size: 1.12rem;
+    box-shadow: 0 8px 26px rgba(255, 61, 143, 0.22);
+  }
+
+  .lista li:last-child::before {
+    content: '💖';
+  }
+
+  /* ---------- PIE ---------- */
+  .pie {
+    margin-top: 44px;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    color: #ffc2e2;
+    line-height: 1.4;
+  }
+
+  .pie small {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #ffb3d9;
+    opacity: 0.65;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Contenedor de la lluvia de corazones -->
+  <div id="lluvia"></div>
+
+  <main class="tarjeta">
+
+    <p class="etiqueta">Nuestro aniversario</p>
+
+    <h1>
+      Feliz aniversario
+      <span class="mi-amor">mi amor</span>
+    </h1>
+
+    <p class="para">Para <strong>Amanda</strong> 💗</p>
+
+    <button id="btnCorazones" type="button">Tócame 💕</button>
+    <p class="pista">(dale click y mira lo que pasa)</p>
+
+    <div class="divisor">✦</div>
+
+    <h2>Cosas que amo de ti</h2>
+
+    <ul class="lista">
+      <li>Tus ojos</li>
+      <li>Tu boca</li>
+      <li>Tu culo xd</li>
+      <li>Tus "masitas" como les dices xd</li>
+      <li>Y tú, todo tú</li>
+    </ul>
+
+    <p class="pie">
+      Gracias por todo este tiempo juntos.<br>
+      Te amo, Amanda.
+      <small>Hecho con mucho amor, solo para ti 💗</small>
+    </p>
+
+  </main>
+
+<script>
+  // Esperamos a que todo el HTML esté cargado
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    const boton = document.getElementById('btnCorazones');
+    const contenedor = document.getElementById('lluvia');
+    const emojis = ['❤️', '💖', '💕', '💗', '💓', '💞', '🩷', '💘', '❤️‍🔥'];
+
+    function crearCorazon() {
+      const corazon = document.createElement('div');
+      corazon.className = 'heart';
+
+      const duracion = 3.5 + Math.random() * 3;
+
+      corazon.style.left = Math.random() * 100 + 'vw';
+      corazon.style.fontSize = (16 + Math.random() * 28) + 'px';
+      corazon.style.animationDuration = duracion + 's';
+      corazon.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+
+      const interior = document.createElement('span');
+      interior.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      interior.style.animationDuration = (1.4 + Math.random() * 1.4) + 's';
+      interior.style.animationDelay = (-Math.random() * 2) + 's';
+
+      corazon.appendChild(interior);
+      contenedor.appendChild(corazon);
+
+      setTimeout(() => corazon.remove(), duracion * 1000 + 300);
+    }
+
+    function lluvia() {
+      console.log("¡Botón presionado! Iniciando lluvia de corazones..."); // Para depurar
+      // Ráfaga inicial
+      for (let i = 0; i < 30; i++) {
+        setTimeout(crearCorazon, i * 60);
+      }
+      // Lluvia continua por unos segundos
+      const intervalo = setInterval(crearCorazon, 110);
+      setTimeout(() => clearInterval(intervalo), 4000);
+    }
+
+    // Escuchamos el evento click (funciona en PC y en la mayoría de móviles)
+    boton.addEventListener('click', lluvia);
+    
+    // Añadimos touchstart para asegurar compatibilidad en móviles antiguos
+    boton.addEventListener('touchstart', function(e) {
+      e.preventDefault(); // Evita que se dispare doble
+      lluvia();
+    }, { passive: false });
+
+  });
+</script>
+
+</body>
+</html>
